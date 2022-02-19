@@ -7,12 +7,27 @@ import racingcar.minhoyoo.domain.TrialCount;
 
 public class Game {
     public void init() {
+        Cars cars = getCars();
+
+        TrialCount trialCount = getTrialCount();
+
+        race(cars, trialCount);
+    }
+
+    private Cars getCars() {
         Output.askInput();
-        Cars cars = new Cars(Input.getCarNames());
+        return new Cars(Input.getCarNames());
+    }
 
+    private TrialCount getTrialCount() {
         Output.askTrialCount();
-        TrialCount trialCount = new TrialCount(Input.getTrialCount());
+        return new TrialCount(Input.getTrialCount());
+    }
 
-        cars.moveAll();
+    private void race(Cars cars, TrialCount trialCount) {
+        while (trialCount.isPositive()) {
+            cars.moveAll();
+            trialCount.minus();
+        }
     }
 }

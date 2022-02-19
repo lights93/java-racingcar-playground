@@ -24,4 +24,34 @@ class TrialCountTest {
             .isThrownBy(() -> new TrialCount(count))
                 .withMessage("숫자가 아니거나 음수입니다.");
     }
+
+    @DisplayName("횟수 뺴기")
+    @Test
+    void minus() {
+        TrialCount trialCount = new TrialCount("1");
+
+        trialCount.minus();
+
+        assertThat(trialCount).isEqualTo(new TrialCount("0"));
+    }
+
+    @DisplayName("횟수 뺴기")
+    @Test
+    void minusError() {
+        TrialCount trialCount = new TrialCount("0");
+
+        assertThatExceptionOfType(IllegalStateException.class)
+            .isThrownBy(trialCount::minus)
+                .withMessage("음수로 변경 불가능합니다.");
+    }
+
+    @DisplayName("양수인지 확인")
+    @Test
+    void isPositive() {
+        TrialCount zeroCount = new TrialCount("0");
+        assertThat(zeroCount.isPositive()).isFalse();
+
+        TrialCount positiveCount = new TrialCount("1");
+        assertThat(positiveCount.isPositive()).isTrue();
+    }
 }
