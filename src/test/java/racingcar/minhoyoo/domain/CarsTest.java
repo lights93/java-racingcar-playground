@@ -13,4 +13,10 @@ class CarsTest {
 
         assertThat(cars.size()).isEqualTo(3);
     }
+
+    @DisplayName("전체 이동")
+    @Test
+    void moveAll() {
+        // TODO
+    }
 }

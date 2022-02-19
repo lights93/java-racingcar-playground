@@ -12,5 +12,7 @@ public class Game {
 
         Output.askTrialCount();
         TrialCount trialCount = new TrialCount(Input.getTrialCount());
+
+        cars.moveAll();
     }
 }

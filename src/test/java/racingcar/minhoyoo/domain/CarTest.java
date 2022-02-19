@@ -22,6 +22,18 @@ class CarTest {
     void constructError(String name) {
         assertThatExceptionOfType(IllegalArgumentException.class)
             .isThrownBy(() -> new Car(name))
-                .withMessage("비어있거나 5글자 초과한 이름입니다.");
+            .withMessage("비어있거나 5글자 초과한 이름입니다.");
+    }
+
+    @DisplayName("상태값에 따라 이동")
+    @Test
+    void move() {
+        Car car = new Car("name");
+
+        car.move(MoveStatus.FORWARD);
+        assertThat(car.getPosition()).isEqualTo(1);
+
+        car.move(MoveStatus.STOP);
+        assertThat(car.getPosition()).isEqualTo(1);
     }
 }
