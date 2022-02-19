@@ -11,4 +11,7 @@ public class Input {
     public static String getCarNames() {
         return scanner.nextLine();
     }
+    public static String getTrialCount() {
+        return scanner.nextLine();
+    }
 }
