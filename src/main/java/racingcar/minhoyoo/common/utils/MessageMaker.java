@@ -1,4 +1,4 @@
-package racingcar.minhoyoo.common.console;
+package racingcar.minhoyoo.common.utils;
 
 import racingcar.minhoyoo.domain.Car;
 import racingcar.minhoyoo.domain.Cars;

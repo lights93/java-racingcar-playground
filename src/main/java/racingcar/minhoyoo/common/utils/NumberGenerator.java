@@ -1,4 +1,4 @@
-package racingcar.minhoyoo.common.random;
+package racingcar.minhoyoo.common.utils;
 
 import java.util.Random;
 

@@ -5,7 +5,7 @@ import java.util.List;
 import java.util.TreeMap;
 import java.util.stream.Collectors;
 
-import racingcar.minhoyoo.common.random.NumberGenerator;
+import racingcar.minhoyoo.common.utils.NumberGenerator;
 
 public class Cars {
     private static final String COMMA = ",";

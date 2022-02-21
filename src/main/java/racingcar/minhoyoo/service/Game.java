@@ -1,8 +1,8 @@
 package racingcar.minhoyoo.service;
 
 import racingcar.minhoyoo.common.console.Input;
-import racingcar.minhoyoo.common.console.MessageMaker;
 import racingcar.minhoyoo.common.console.Output;
+import racingcar.minhoyoo.common.utils.MessageMaker;
 import racingcar.minhoyoo.domain.Cars;
 import racingcar.minhoyoo.domain.TrialCount;
 import racingcar.minhoyoo.domain.Winners;
