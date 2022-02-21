@@ -11,9 +11,9 @@ class CarsTest {
     @DisplayName("자동차 생성 제대로 되는지 확인")
     @Test
     void construct() {
-        Cars cars = new Cars("pobi,crong,honux");
+        Cars cars = new Cars(Arrays.asList(new Car("name1"), new Car("name2")));
 
-        assertThat(cars.size()).isEqualTo(3);
+        assertThat(cars.size()).isEqualTo(2);
     }
 
     @DisplayName("전체 이동")
@@ -25,7 +25,9 @@ class CarsTest {
     @DisplayName("우승자 찾기")
     @Test
     void findWinners() {
-        Cars cars = new Cars("pobi,crong");
+        Cars cars = new Cars(Arrays.asList(new Car("pobi", 2),
+            new Car("crong", 2),
+            new Car("minho", 1)));
 
         Winners winners = cars.findWinners();
 

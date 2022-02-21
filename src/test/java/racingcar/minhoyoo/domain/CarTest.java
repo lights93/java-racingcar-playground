@@ -24,10 +24,18 @@ class CarTest {
     @ParameterizedTest
     @NullAndEmptySource
     @ValueSource(strings = "123456")
-    void constructError(String name) {
+    void constructErrorWhenNameError(String name) {
         assertThatExceptionOfType(IllegalArgumentException.class)
             .isThrownBy(() -> new Car(name))
             .withMessage("비어있거나 5글자 초과한 이름입니다.");
+    }
+
+    @DisplayName("0 이하의 포지션 입력시 에러")
+    @Test
+    void constructErrorWhenPositionIsLessThanZero() {
+        assertThatExceptionOfType(IllegalArgumentException.class)
+            .isThrownBy(() -> new Car("name", -1))
+            .withMessage("0 이상의 위치만 가능합니다.");
     }
 
     @DisplayName("상태값에 따라 이동")
@@ -47,8 +55,7 @@ class CarTest {
     void compareTo() {
         Car car1 = new Car("name1");
 
-        Car car2 = new Car("name2");
-        car2.move(MoveStatus.FORWARD);
+        Car car2 = new Car("name2", 1);
 
         List<Car> carList = Arrays.asList(car1, car2);
         Collections.sort(carList);

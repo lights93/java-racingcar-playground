@@ -3,7 +3,6 @@ package racingcar.minhoyoo.domain;
 import java.util.Arrays;
 import java.util.List;
 import java.util.TreeMap;
-import java.util.function.Function;
 import java.util.stream.Collectors;
 
 import racingcar.minhoyoo.common.random.NumberGenerator;
@@ -13,11 +12,13 @@ public class Cars {
     private final List<Car> cars;
 
     public Cars(String carNames) {
-        String[] split = carNames.split(COMMA);
-
-        this.cars = Arrays.stream(split)
+        this(Arrays.stream(carNames.split(COMMA))
             .map(Car::new)
-            .collect(Collectors.toList());
+            .collect(Collectors.toList()));
+    }
+
+    public Cars(List<Car> cars) {
+        this.cars = cars;
     }
 
     public int size() {
@@ -36,7 +37,7 @@ public class Cars {
 
     public Winners findWinners() {
         return new Winners(cars.stream()
-            .collect(Collectors.groupingBy(Function.identity(), TreeMap::new, Collectors.toList()))
+            .collect(Collectors.groupingBy(car -> car, TreeMap::new, Collectors.toList()))
             .firstEntry()
             .getValue());
     }
