@@ -27,4 +27,8 @@ public class Cars {
             car -> car.move(MoveStatus.from(NumberGenerator.generate()))
         );
     }
+
+    public List<Car> getCars() {
+        return cars;
+    }
 }

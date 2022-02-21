@@ -11,4 +11,12 @@ public class Output {
     public static void askTrialCount() {
         System.out.println("시도할 회수는 몇회인가요?");
     }
+
+    public static void printCarStatus(String carStatus) {
+        System.out.println(carStatus);
+    }
+
+    public static void printResult() {
+        System.out.println("실행 결과");
+    }
 }
