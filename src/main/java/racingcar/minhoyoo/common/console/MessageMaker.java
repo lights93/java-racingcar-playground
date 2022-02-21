@@ -2,6 +2,7 @@ package racingcar.minhoyoo.common.console;
 
 import racingcar.minhoyoo.domain.Car;
 import racingcar.minhoyoo.domain.Cars;
+import racingcar.minhoyoo.domain.Winners;
 
 public class MessageMaker {
     private static final String DASH = "-";
@@ -31,5 +32,9 @@ public class MessageMaker {
         }
 
         return stringBuilder.toString();
+    }
+
+    public static String makeWinnersMessage(Winners winners) {
+        return String.join(", ", winners.getNames());
     }
 }

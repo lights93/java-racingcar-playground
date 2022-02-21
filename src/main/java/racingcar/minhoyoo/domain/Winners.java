@@ -13,6 +13,10 @@ public class Winners {
             .collect(Collectors.toList());
     }
 
+    public List<String> getNames() {
+        return names;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o)

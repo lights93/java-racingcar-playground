@@ -5,6 +5,7 @@ import racingcar.minhoyoo.common.console.MessageMaker;
 import racingcar.minhoyoo.common.console.Output;
 import racingcar.minhoyoo.domain.Cars;
 import racingcar.minhoyoo.domain.TrialCount;
+import racingcar.minhoyoo.domain.Winners;
 
 public class Game {
     public void init() {
@@ -12,7 +13,8 @@ public class Game {
 
         TrialCount trialCount = getTrialCount();
 
-        race(cars, trialCount);
+        Winners winners = race(cars, trialCount);
+        Output.printWinners(MessageMaker.makeWinnersMessage(winners));
     }
 
     private Cars getCars() {
@@ -25,7 +27,7 @@ public class Game {
         return new TrialCount(Input.getTrialCount());
     }
 
-    private void race(Cars cars, TrialCount trialCount) {
+    private Winners race(Cars cars, TrialCount trialCount) {
         Output.printResult();
         while (trialCount.isPositive()) {
             cars.moveAll();
@@ -33,5 +35,7 @@ public class Game {
 
             Output.printCarStatus(MessageMaker.makeCarsMessage(cars));
         }
+
+        return cars.findWinners();
     }
 }
