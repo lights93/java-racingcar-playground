@@ -1,6 +1,11 @@
 package racingcar.minhoyoo.domain;
 
 import static org.assertj.core.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.*;
+
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -35,5 +40,22 @@ class CarTest {
 
         car.move(MoveStatus.STOP);
         assertThat(car.getPosition()).isEqualTo(1);
+    }
+
+    @DisplayName("비교")
+    @Test
+    void compareTo() {
+        Car car1 = new Car("name1");
+
+        Car car2 = new Car("name2");
+        car2.move(MoveStatus.FORWARD);
+
+        List<Car> carList = Arrays.asList(car1, car2);
+        Collections.sort(carList);
+
+        assertAll(
+            () -> assertThat(carList.get(0)).isEqualTo(car2),
+            () -> assertThat(carList.get(1)).isEqualTo(car1)
+        );
     }
 }

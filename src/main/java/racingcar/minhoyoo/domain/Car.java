@@ -1,6 +1,6 @@
 package racingcar.minhoyoo.domain;
 
-public class Car {
+public class Car implements Comparable<Car>{
     private static final int MAX_NAME_SIZE = 5;
     private final String name;
     private int position;
@@ -26,5 +26,10 @@ public class Car {
         if (moveStatus.isForward()) {
             position++;
         }
+    }
+
+    @Override
+    public int compareTo(Car o) {
+        return Integer.compare(o.position, this.position);
     }
 }

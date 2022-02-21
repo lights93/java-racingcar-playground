@@ -2,6 +2,8 @@ package racingcar.minhoyoo.domain;
 
 import static org.assertj.core.api.Assertions.*;
 
+import java.util.Arrays;
+
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -18,5 +20,16 @@ class CarsTest {
     @Test
     void moveAll() {
         // TODO
+    }
+
+    @DisplayName("우승자 찾기")
+    @Test
+    void findWinners() {
+        Cars cars = new Cars("pobi,crong");
+
+        Winners winners = cars.findWinners();
+
+        assertThat(winners)
+            .isEqualTo(new Winners(Arrays.asList(new Car("pobi"), new Car("crong"))));
     }
 }
