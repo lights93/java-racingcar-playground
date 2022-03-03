@@ -4,38 +4,39 @@ import racingcar.minhoyoo.common.console.Input;
 import racingcar.minhoyoo.common.console.Output;
 import racingcar.minhoyoo.common.utils.MessageMaker;
 import racingcar.minhoyoo.domain.Cars;
+import racingcar.minhoyoo.domain.RandomMovingStrategy;
 import racingcar.minhoyoo.domain.TrialCount;
 import racingcar.minhoyoo.domain.Winners;
 
 public class Game {
-    public void init() {
-        Cars cars = getCars();
+	public void init() {
+		Cars cars = getCars();
 
-        TrialCount trialCount = getTrialCount();
+		TrialCount trialCount = getTrialCount();
 
-        Winners winners = race(cars, trialCount);
-        Output.printWinners(MessageMaker.makeWinnersMessage(winners));
-    }
+		Winners winners = race(cars, trialCount);
+		Output.printWinners(MessageMaker.makeWinnersMessage(winners));
+	}
 
-    private Cars getCars() {
-        Output.askInput();
-        return new Cars(Input.getCarNames());
-    }
+	private Cars getCars() {
+		Output.askInput();
+		return new Cars(Input.getCarNames());
+	}
 
-    private TrialCount getTrialCount() {
-        Output.askTrialCount();
-        return new TrialCount(Input.getTrialCount());
-    }
+	private TrialCount getTrialCount() {
+		Output.askTrialCount();
+		return new TrialCount(Input.getTrialCount());
+	}
 
-    private Winners race(Cars cars, TrialCount trialCount) {
-        Output.printResult();
-        while (trialCount.isPositive()) {
-            cars.moveAll();
-            trialCount.minus();
+	private Winners race(Cars cars, TrialCount trialCount) {
+		Output.printResult();
+		while (trialCount.isPositive()) {
+			cars.moveAll(new RandomMovingStrategy());
+			trialCount.minus();
 
-            Output.printCarStatus(MessageMaker.makeCarsMessage(cars));
-        }
+			Output.printCarStatus(MessageMaker.makeCarsMessage(cars));
+		}
 
-        return cars.findWinners();
-    }
+		return cars.findWinners();
+	}
 }
