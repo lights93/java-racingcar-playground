@@ -1,6 +1,7 @@
 package racingcar.minhoyoo.domain;
 
 import static org.assertj.core.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.*;
 
 import java.util.Arrays;
 
@@ -19,7 +20,14 @@ class CarsTest {
 	@DisplayName("전체 이동")
 	@Test
 	void moveAll() {
-		// TODO
+		Cars cars = new Cars(Arrays.asList(new Car("name1"), new Car("name2")));
+
+		cars.moveAll(() -> true);
+
+		assertAll(
+			() -> assertThat(cars.getCars().get(0).getPosition()).isEqualTo(1),
+			() -> assertThat(cars.getCars().get(1).getPosition()).isEqualTo(1)
+		);
 	}
 
 	@DisplayName("우승자 찾기")
